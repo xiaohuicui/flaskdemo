@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+
+{{ wtf.quick_form(form1) }}
+{{ wtf.quick_form(form2) }}
+
+
+    <table class="table">
+        <thead>
+        <th>Name</th>
+        <th>State</th>
+        <th>Salary</th>
+        <th>Grade</th>
+        <th>Room</th>
+        <th>Telnum</th>
+        <th>Picture</th>
+        <th>Keywords</th>
+        </thead>
+        <tbody>
+        {% for item in rows %}
+            <tr>
+                {% for i in item %}
+                    <td>
+                    {% if loop.index == 7 %}
+                    <img src="{{ url_for('static',filename=i) }}" height="45px" width="45px"/>
+                    {% else %}
+                    {{ i }}
+                    {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    {% if name %}
+        Thanks for submitting your name {{ name }}!
+    {% endif %}
+{#    <img src="{{ url_for('static',filename=(i)) }}" height="300px" width="300px"/>#}
+    <table class="table">
+        <thead>
+        {% for item in cols %}
+            <th>{{ item }}</th>
+        {% endfor %}
+        </thead>
+        <tbody>
+        {% for item in rows %}
+            <tr>
+                {% for i in item %}
+                    <td>
+                    {% if loop.index == 7 %}
+                    <img src="{{ url_for('static',filename=i) }}" height="45px" width="45px"/>
+                    {% else %}
+                    {{ i }}
+                    {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    {{ wtf.quick_form(form) }}
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}

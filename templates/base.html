@@ -1,0 +1,75 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="static/style.css">
+{% endblock %}
+
+{% block title %}
+    {% if title %}{{ title }} - {{ appname }}{% else %}{{ appname }}{% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
+{#                <a class="navbar-brand" href="{{ url_for('help') }}">Help</a>#}
+                <a class="navbar-brand" href="{{ url_for('showtable') }}">showtable</a>
+                <a class="navbar-brand" href="{{ url_for('search') }}">search</a>
+                <a class="navbar-brand" href="{{ url_for('remove') }}">remove</a>
+                <a class="navbar-brand" href="{{ url_for('change') }}">change</a>
+{#                <a class="navbar-brand" href="{{ url_for('hist') }}">hist</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('pie') }}">pie</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('line') }}">line</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('scatter') }}">scatter</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('showhistogram') }}">showhistogram</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('q5') }}">q5</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('q6') }}">q6</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('q7') }}">q7</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('largest_n_quakes') }}">largest_n_quakes</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('daterangesearch') }}">daterangesearch</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('recentquakes') }}">recentquakes</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('distancesearch') }}">distancesearchquakes</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('largestquakes') }}">largestquakes</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('localSearch') }}">localSearch</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('minmagsearch') }}">minmagsearch</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('randomselect') }}">randomselect</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('searchbycode') }}">searchbycode</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('yearrangesearch') }}">yearrangesearch</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('q9') }}">q9</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('q10search') }}">q10</a>#}
+
+{#                <a class="navbar-brand" href="{{ url_for('codeorname') }}">codeorname</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('showpic') }}">showpicture</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('evenorodd') }}">evenorodd</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('searchbyroom') }}">searchbyroom</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('searchbyID') }}">searchbyID</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('remove') }}">remove</a>#}
+{#                <a class="navbar-brand" href="{{ url_for('change') }}">change</a>#}
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div id="title_bar" class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h2 id="main_title">{{ appname }}</h2>
+{#            <h3 id="student_id">1001778477</h3>#}
+{#            <h4 id="student_name">peng,kong</h4>#}
+        </div>
+    </div>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block app_content %}
+        {% endblock %}
+    </div>
+{% endblock %}
